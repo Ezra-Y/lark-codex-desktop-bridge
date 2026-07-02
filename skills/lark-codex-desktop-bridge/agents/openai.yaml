@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lark Codex Desktop Bridge"
+  short_description: "Connect lark-channel-bridge chats to Codex desktop threads."
+  default_prompt: "Connect this Feishu bot chat to the current Codex desktop thread."
