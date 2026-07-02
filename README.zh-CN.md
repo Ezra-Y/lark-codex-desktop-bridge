@@ -13,7 +13,19 @@
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827">
 </p>
 
-把 Codex 桌面端/App 线程接进飞书/Lark，并使用 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) 作为消息桥。
+## 使用场景
+
+你正在 Codex 桌面端里和 agent 把一个问题聊到一半：代码上下文已经铺开，方案也快成形了。突然要离开电脑，去开会、通勤，或者只是拿着手机处理接下来的几步。
+
+这时候最麻烦的不是“能不能再问 AI 一句”，而是：你不想重新开一个会话，不想重新解释背景，也不想把刚才桌面端里的上下文丢掉。你只想在飞书里继续说一句，然后让同一个 Codex 桌面线程接着往下跑。
+
+### 小故事板
+
+| 1. 桌面端聊到一半 | 2. 人离开电脑 | 3. 飞书里继续发消息 | 4. 回到同一个 Codex 线程 |
+| --- | --- | --- | --- |
+| Codex Desktop 里已经有完整上下文 | 会议、路上、手机边处理边看 | 给飞书/Lark 机器人发一句话 | 回复和后续操作继续落在原线程里 |
+
+这个 skill 就是为这个场景做的：把 Codex 桌面端/App 线程接进飞书/Lark，并使用 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) 作为消息桥。
 
 这个仓库包含一个 Codex skill 和配套脚本。它不替代 `lark-channel-bridge`，而是在最后一跳加一个本地 wrapper：把原本的 `codex exec` 调用改成 Codex `app-server` 的 `thread/resume + turn/start`，从而让飞书/Lark 消息进入正在使用的 Codex 桌面线程。
 

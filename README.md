@@ -13,7 +13,19 @@
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827">
 </p>
 
-Connect Codex Desktop/App threads to Feishu/Lark, using [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) as the message bridge.
+## The Moment This Solves
+
+You are deep in a Codex Desktop thread: the codebase is loaded, the reasoning is warm, and the next step is almost clear. Then you have to leave the computer for a meeting, a commute, or a quick run where your phone is the only thing in reach.
+
+The painful part is not asking an AI another question. The painful part is losing the live desktop thread. You do not want to start over, restate the repo context, or paste a summary into a fresh chat. You want to send one message from Feishu/Lark and have the same Codex Desktop thread continue.
+
+### Storyboard
+
+| 1. Mid-flow on desktop | 2. Away from the keyboard | 3. Continue in Feishu/Lark | 4. Same Codex thread resumes |
+| --- | --- | --- | --- |
+| Codex Desktop already has the full context | You step into a meeting or switch to mobile | Send the bot one more instruction | The response lands back in the live desktop/app thread |
+
+This skill is built for that moment: connect Codex Desktop/App threads to Feishu/Lark, using [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) as the message bridge.
 
 This repository contains a Codex skill plus helper scripts. It does not replace `lark-channel-bridge`; it adds a local wrapper that changes the final Codex execution hop from `codex exec` to Codex `app-server` so Feishu/Lark messages can continue a live Codex desktop/app thread.
 
