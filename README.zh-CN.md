@@ -2,9 +2,20 @@
 
 [English README](README.md)
 
-把基于 `lark-channel-bridge` 的飞书/Lark 机器人会话接到 Codex 桌面端/App 线程。
+<p align="center">
+  <img src="assets/banner.svg" alt="Lark Codex Desktop Bridge banner">
+</p>
 
-这个仓库包含一个 Codex skill 和配套脚本。它不替代 `lark-channel-bridge`，而是在最后一跳加一个本地 wrapper：把原本的 `codex exec` 调用改成 Codex `app-server` 的 `thread/resume + turn/start`，从而让飞书消息进入指定的 Codex 桌面线程。
+<p align="center">
+  <a href="https://github.com/zarazhangrui/feishu-claude-code-bridge"><img alt="Built on lark-channel-bridge" src="https://img.shields.io/badge/built%20on-lark--channel--bridge-0ea5e9"></a>
+  <img alt="Codex Desktop" src="https://img.shields.io/badge/Codex-Desktop%20%2F%20App-22c55e">
+  <img alt="Feishu Lark" src="https://img.shields.io/badge/Feishu%20%2F%20Lark-bot%20bridge-6366f1">
+  <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827">
+</p>
+
+把 Codex 桌面端/App 线程接进飞书/Lark，并使用 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) 作为消息桥。
+
+这个仓库包含一个 Codex skill 和配套脚本。它不替代 `lark-channel-bridge`，而是在最后一跳加一个本地 wrapper：把原本的 `codex exec` 调用改成 Codex `app-server` 的 `thread/resume + turn/start`，从而让飞书/Lark 消息进入正在使用的 Codex 桌面线程。
 
 ## 架构
 
@@ -20,13 +31,23 @@
 
 本项目把 `lark-channel-bridge` 作为外部运行时依赖。
 
-`lark-channel-bridge` 是 npm 包，仓库指向：
+`lark-channel-bridge` 是 npm 包，对应原项目：
 
-```text
-github.com/zarazhangrui/feishu-claude-code-bridge
-```
+<https://github.com/zarazhangrui/feishu-claude-code-bridge>
 
 本仓库不会把这个包的代码复制进来。skill 里的 bootstrap 脚本可以检查它是否存在；只有用户显式传 `--install` 时才会安装。
+
+## 仓库结构
+
+```text
+skills/lark-codex-desktop-bridge/
+  SKILL.md                         Codex skill 说明
+  agents/openai.yaml               Codex skill 的 UI 元数据
+  scripts/bootstrap_dependencies.js 依赖检查/安装脚本
+  scripts/setup_lark_codex_desktop_bridge.js 桌面线程绑定脚本
+```
+
+`agents/openai.yaml` 不是飞书/Lark 或 bridge 的运行配置。它只是 Codex 用来展示 skill 名称、短描述和默认提示词的 UI 元数据。
 
 ## 前置条件
 
@@ -121,3 +142,7 @@ node --check ~/.lark-channel/bin/codex-appserver-wrapper.js
 ## License
 
 MIT
+
+## 致谢
+
+本项目基于 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge)。飞书/Lark 消息桥接由该包负责；本项目只补充 Codex 桌面端/App 线程适配层。

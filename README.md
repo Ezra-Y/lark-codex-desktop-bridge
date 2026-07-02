@@ -2,9 +2,20 @@
 
 [中文说明](README.zh-CN.md)
 
-Connect a Feishu/Lark bot chat, powered by `lark-channel-bridge`, to a Codex Desktop/App thread.
+<p align="center">
+  <img src="assets/banner.svg" alt="Lark Codex Desktop Bridge banner">
+</p>
 
-This repository contains a Codex skill plus helper scripts. It does not replace `lark-channel-bridge`; it adds a local wrapper that changes the final Codex execution hop from `codex exec` to Codex `app-server` so messages can continue a desktop/app thread.
+<p align="center">
+  <a href="https://github.com/zarazhangrui/feishu-claude-code-bridge"><img alt="Built on lark-channel-bridge" src="https://img.shields.io/badge/built%20on-lark--channel--bridge-0ea5e9"></a>
+  <img alt="Codex Desktop" src="https://img.shields.io/badge/Codex-Desktop%20%2F%20App-22c55e">
+  <img alt="Feishu Lark" src="https://img.shields.io/badge/Feishu%20%2F%20Lark-bot%20bridge-6366f1">
+  <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827">
+</p>
+
+Connect Codex Desktop/App threads to Feishu/Lark, using [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) as the message bridge.
+
+This repository contains a Codex skill plus helper scripts. It does not replace `lark-channel-bridge`; it adds a local wrapper that changes the final Codex execution hop from `codex exec` to Codex `app-server` so Feishu/Lark messages can continue a live Codex desktop/app thread.
 
 ## Architecture
 
@@ -20,13 +31,23 @@ Feishu/Lark message
 
 This project depends on `lark-channel-bridge` as an external runtime dependency.
 
-`lark-channel-bridge` is the npm package backed by:
+`lark-channel-bridge` is the npm package backed by the original project:
 
-```text
-github.com/zarazhangrui/feishu-claude-code-bridge
-```
+<https://github.com/zarazhangrui/feishu-claude-code-bridge>
 
 This repository does not vendor that package. The skill's bootstrap script can check for it and install it only when explicitly requested.
+
+## Repository Layout
+
+```text
+skills/lark-codex-desktop-bridge/
+  SKILL.md                         Codex skill instructions
+  agents/openai.yaml               Codex skill UI metadata
+  scripts/bootstrap_dependencies.js dependency checker/installer
+  scripts/setup_lark_codex_desktop_bridge.js desktop-thread setup script
+```
+
+`agents/openai.yaml` is not a Feishu/Lark or bridge runtime config. It is metadata used by Codex to show the skill name, short description, and default prompt in the UI.
 
 ## Prerequisites
 
@@ -121,3 +142,7 @@ After sending a Feishu/Lark message, check bridge logs and confirm the run resum
 ## License
 
 MIT
+
+## Acknowledgements
+
+This project builds on [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge). That package owns the Feishu/Lark messaging bridge; this project only adds the Codex Desktop/App thread adapter.
