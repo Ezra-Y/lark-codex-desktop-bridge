@@ -1,14 +1,22 @@
+<h1 align="center">Lark Codex Desktop Bridge</h1>
+
 <p align="center">
-  <img src="assets/banner.png" alt="Lark Codex Desktop Bridge banner">
+  <img src="assets/storyboard.png" alt="Lark Codex Desktop Bridge storyboard">
 </p>
 
-[English README](README.md)
+<p align="center">
+  <a href="README.md">English README</a>
+</p>
 
 <p align="center">
   <img alt="Built on lark-channel-bridge" src="https://img.shields.io/badge/built%20on-lark--channel--bridge-0ea5e9">
   <img alt="Codex Desktop" src="https://img.shields.io/badge/Codex-Desktop%20%2F%20App-22c55e">
   <img alt="Feishu Lark" src="https://img.shields.io/badge/Feishu%20%2F%20Lark-bot%20bridge-6366f1">
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827">
+</p>
+
+<p align="center">
+  <img src="assets/architecture.png" alt="Lark Codex Desktop Bridge architecture">
 </p>
 
 把 Codex 桌面端/App 线程接进飞书/Lark，并使用 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) 作为消息桥。
