@@ -3,7 +3,7 @@
 [English README](README.md)
 
 <p align="center">
-  <img src="assets/banner.svg" alt="Lark Codex Desktop Bridge banner">
+  <img src="assets/banner.png" alt="Lark Codex Desktop Bridge banner">
 </p>
 
 <p align="center">
