@@ -1,27 +1,78 @@
 <svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Lark Codex Desktop Bridge</title>
   <desc id="desc">A diagram showing Feishu and Lark messages flowing through lark-channel-bridge and a local wrapper into Codex Desktop.</desc>
-  <rect width="1280" height="420" rx="34" fill="#0B1020"/>
-  <path d="M0 276C170 220 312 258 454 292C596 326 742 356 900 284C1058 212 1176 148 1280 183V420H0V276Z" fill="#14213D"/>
-  <path d="M0 318C177 282 315 301 460 331C605 361 760 401 927 331C1094 261 1193 229 1280 249V420H0V318Z" fill="#123C69" opacity="0.72"/>
-  <circle cx="1045" cy="100" r="135" fill="#21C55D" opacity="0.12"/>
-  <circle cx="230" cy="335" r="190" fill="#3B82F6" opacity="0.14"/>
-  <rect x="88" y="82" width="270" height="128" rx="22" fill="#E8F7FF" stroke="#7DD3FC" stroke-width="2"/>
-  <text x="223" y="132" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="32" font-weight="800" fill="#073B4C">Feishu / Lark</text>
-  <text x="223" y="169" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="600" fill="#25637A">chat message</text>
-  <rect x="458" y="82" width="324" height="128" rx="22" fill="#F5F7FB" stroke="#CBD5E1" stroke-width="2"/>
-  <text x="620" y="127" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="800" fill="#111827">lark-channel-bridge</text>
-  <text x="620" y="164" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="600" fill="#475569">events, queue, replies</text>
-  <rect x="876" y="82" width="316" height="128" rx="22" fill="#ECFDF5" stroke="#86EFAC" stroke-width="2"/>
-  <text x="1034" y="127" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="800" fill="#064E3B">Codex Desktop</text>
-  <text x="1034" y="164" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="600" fill="#047857">app-server thread</text>
-  <path d="M373 146H432" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
-  <path d="M426 124L450 146L426 168" stroke="#93C5FD" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M796 146H850" stroke="#86EFAC" stroke-width="8" stroke-linecap="round"/>
-  <path d="M844 124L868 146L844 168" stroke="#86EFAC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="420" y="250" width="440" height="72" rx="18" fill="#111827" stroke="#334155" stroke-width="2"/>
-  <text x="640" y="294" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="20" font-weight="700" fill="#E5E7EB">codex-appserver-wrapper.js</text>
-  <path d="M640 211V240" stroke="#64748B" stroke-width="6" stroke-linecap="round"/>
-  <path d="M640 322V352" stroke="#64748B" stroke-width="6" stroke-linecap="round"/>
-  <text x="640" y="376" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#D1D5DB">Continue a live Codex desktop/app thread from Feishu or Lark</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111F"/>
+      <stop offset="0.52" stop-color="#0D1730"/>
+      <stop offset="1" stop-color="#08261F"/>
+    </linearGradient>
+    <linearGradient id="adapterFill" x1="352" y1="242" x2="928" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17152D"/>
+      <stop offset="0.5" stop-color="#111827"/>
+      <stop offset="1" stop-color="#10251E"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" stroke="#8BA3C7" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="adapterGlow" x="314" y="204" width="652" height="174" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#A78BFA" flood-opacity="0.42"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#020617" flood-opacity="0.4"/>
+    </filter>
+    <filter id="cardShadow" x="40" y="52" width="1200" height="180" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#020617" flood-opacity="0.26"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="420" rx="34" fill="url(#bg)"/>
+  <rect width="1280" height="420" rx="34" fill="url(#grid)"/>
+  <path d="M0 278C160 225 315 252 468 292C625 333 768 354 924 284C1076 216 1177 160 1280 184V420H0V278Z" fill="#123C69" opacity="0.62"/>
+  <path d="M0 326C183 280 316 303 462 334C620 368 768 390 934 326C1092 265 1194 236 1280 254V420H0V326Z" fill="#0F766E" opacity="0.28"/>
+
+  <!-- Connector paths are intentionally drawn before the cards so they sit underneath the boxes. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M372 148H452" stroke="#93C5FD" stroke-width="8"/>
+    <path d="M437 132L456 148L437 164" stroke="#93C5FD" stroke-width="8"/>
+    <path d="M828 148H908" stroke="#86EFAC" stroke-width="8"/>
+    <path d="M893 132L912 148L893 164" stroke="#86EFAC" stroke-width="8"/>
+    <path d="M640 212V242" stroke="#A5B4FC" stroke-width="7"/>
+    <path d="M640 340V358" stroke="#A5B4FC" stroke-width="7"/>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="72" y="76" width="300" height="136" rx="22" fill="#E8F7FF" stroke="#7DD3FC" stroke-width="2"/>
+    <g transform="translate(106 113)">
+      <rect x="0" y="0" width="20" height="20" rx="6" fill="#2DD4BF"/>
+      <rect x="25" y="0" width="20" height="20" rx="6" fill="#60A5FA"/>
+      <rect x="0" y="25" width="20" height="20" rx="6" fill="#FACC15"/>
+      <rect x="25" y="25" width="20" height="20" rx="6" fill="#FB7185"/>
+      <circle cx="23" cy="23" r="8" fill="#FFFFFF" opacity="0.92"/>
+    </g>
+    <text x="252" y="128" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#073B4C">Feishu / Lark</text>
+    <text x="252" y="166" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="600" fill="#25637A">chat message</text>
+
+    <rect x="458" y="76" width="364" height="136" rx="22" fill="#F5F7FB" stroke="#CBD5E1" stroke-width="2"/>
+    <text x="640" y="128" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="800" fill="#111827">lark-channel-bridge</text>
+    <text x="640" y="166" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="600" fill="#475569">events, queue, replies</text>
+
+    <rect x="908" y="76" width="300" height="136" rx="22" fill="#ECFDF5" stroke="#86EFAC" stroke-width="2"/>
+    <g transform="translate(943 106)">
+      <rect x="0" y="0" width="54" height="42" rx="10" fill="#052E2B" stroke="#6EE7B7" stroke-width="2"/>
+      <rect x="8" y="8" width="38" height="24" rx="5" fill="#0F172A"/>
+      <path d="M21 16L15 20L21 24" stroke="#6EE7B7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M32 16L38 20L32 24" stroke="#6EE7B7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M29 14L25 26" stroke="#A7F3D0" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="18" y="47" width="18" height="4" rx="2" fill="#6EE7B7"/>
+    </g>
+    <text x="1090" y="128" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="800" fill="#064E3B">Codex Desktop</text>
+    <text x="1090" y="166" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="600" fill="#047857">app-server thread</text>
+  </g>
+
+  <rect x="352" y="242" width="576" height="98" rx="24" fill="url(#adapterFill)" stroke="#C084FC" stroke-width="3" filter="url(#adapterGlow)"/>
+  <rect x="386" y="260" width="88" height="26" rx="13" fill="#A78BFA" fill-opacity="0.18" stroke="#C4B5FD" stroke-opacity="0.62"/>
+  <text x="430" y="278" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="800" fill="#DDD6FE">OURS</text>
+  <text x="640" y="285" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="24" font-weight="800" fill="#F8FAFC">codex-appserver-wrapper.js</text>
+  <text x="640" y="316" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17" font-weight="700" fill="#C4B5FD">our adapter layer: bridge CLI -> Codex app-server</text>
+
+  <text x="640" y="382" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" font-weight="750" fill="#D1D5DB">Continue a live Codex desktop/app thread from Feishu or Lark</text>
 </svg>
