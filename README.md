@@ -18,7 +18,7 @@
 ## Use Case
 
 <p align="left">
-  <img src="assets/storyboard.png" alt="Lark Codex Desktop Bridge storyboard" width="450">
+  <img src="assets/storyboard.png" alt="Lark Codex Desktop Bridge storyboard" width="550">
 </p>
 
 Keep the same Codex Desktop thread going, and continue it seamlessly from Feishu/Lark. On the road, in an elevator, or anywhere you only have your phone, you can keep the conversation moving while the desktop thread stays in sync.
