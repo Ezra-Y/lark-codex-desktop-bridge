@@ -1,11 +1,11 @@
 <h1 align="center">Lark Codex Desktop Bridge</h1>
 
 <p align="center">
-  <img src="assets/storyboard.png" alt="Lark Codex Desktop Bridge storyboard">
+  <a href="README.md">English README</a>
 </p>
 
 <p align="center">
-  <a href="README.md">English README</a>
+  <img src="assets/architecture.png" alt="Lark Codex Desktop Bridge architecture">
 </p>
 
 <p align="center">
@@ -15,13 +15,13 @@
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827">
 </p>
 
-<p align="center">
-  <img src="assets/architecture.png" alt="Lark Codex Desktop Bridge architecture">
+## 使用场景
+
+<p align="left">
+  <img src="assets/storyboard.png" alt="Lark Codex Desktop Bridge storyboard" width="450">
 </p>
 
-把 Codex 桌面端/App 线程接进飞书/Lark，并使用 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) 作为消息桥。
-
-这个仓库包含一个 Codex skill 和配套脚本。它不替代 `lark-channel-bridge`，而是在最后一跳加一个本地 wrapper：把原本的 `codex exec` 调用改成 Codex `app-server` 的 `thread/resume + turn/start`，从而让飞书/Lark 消息进入正在使用的 Codex 桌面线程。
+同一个 Codex Desktop 线程，让你能直接从桌面无缝接到飞书/Lark。在路上、在电梯里用手机继续聊，桌面端也会同步更新，思路不断电～
 
 ## 架构
 
@@ -32,16 +32,6 @@
   -> Codex app-server
   -> Codex 桌面端/App 线程
 ```
-
-## 依赖关系
-
-本项目把 `lark-channel-bridge` 作为外部运行时依赖。
-
-`lark-channel-bridge` 是 npm 包，对应原项目：
-
-<https://github.com/zarazhangrui/feishu-claude-code-bridge>
-
-本仓库不会把这个包的代码复制进来。skill 里的 bootstrap 脚本可以检查它是否存在；只有用户显式传 `--install` 时才会安装。
 
 ## 仓库结构
 
@@ -59,7 +49,7 @@ skills/lark-codex-desktop-bridge/
 
 - Node.js 和 npm
 - Codex Desktop 或 Codex CLI
-- `lark-channel-bridge`
+- `lark-channel-bridge` <https://github.com/zarazhangrui/feishu-claude-code-bridge>
 - 来自 `@larksuite/cli` 的 `lark-cli`
 - 一个已经可用的 `lark-channel-bridge` 飞书/Lark 机器人 profile
 
@@ -67,12 +57,14 @@ skills/lark-codex-desktop-bridge/
 
 ## 安装 Skill
 
-把 skill 复制到 Codex skills 目录：
+在 macOS/Linux 上，从本仓库根目录把 skill 复制到 Codex 默认 skills 目录：
 
 ```bash
 mkdir -p ~/.codex/skills
 cp -R skills/lark-codex-desktop-bridge ~/.codex/skills/
 ```
+
+如果你设置了自定义 `CODEX_HOME`，请把上面和后续命令里的 `~/.codex` 替换成你的 `CODEX_HOME` 路径。
 
 然后重启 Codex，让 skill 被识别。
 
@@ -151,4 +143,6 @@ MIT
 
 ## 致谢
 
-本项目基于 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge)。飞书/Lark 消息桥接由该包负责；本项目只补充 Codex 桌面端/App 线程适配层。
+本项目基于 [`lark-channel-bridge`](https://github.com/zarazhangrui/feishu-claude-code-bridge) 构建。该项目负责飞书/Lark 消息接收、队列、回复和 bridge 运行时；本项目只补充 Codex Desktop/App 线程适配层。
+
+同时感谢 Feishu/Lark Open Platform 与 [`@larksuite/cli`](https://github.com/larksuite/cli) 提供的开放 API 与本地 CLI 工具链，以及 Codex Desktop / Codex CLI 提供的桌面线程与 app-server 能力。
