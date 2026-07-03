@@ -18,7 +18,7 @@
 ## 使用场景
 
 <p align="left">
-  <img src="assets/storyboard.png" alt="Lark Codex Desktop Bridge storyboard" width="550">
+  <img src="assets/storyboard.png" alt="Lark Codex Desktop Bridge storyboard" width="700">
 </p>
 
 同一个 Codex Desktop 线程，让你能直接从桌面无缝接到飞书/Lark。在路上、在电梯里用手机继续聊，桌面端也会同步更新，思路不断电～
